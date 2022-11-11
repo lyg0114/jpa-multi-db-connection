@@ -1,6 +1,6 @@
-package com.waterleak.waterleak.dao.product;
+package com.waterleak.dao.product;
 
-import com.waterleak.waterleak.model.product.Product;
+import com.waterleak.model.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

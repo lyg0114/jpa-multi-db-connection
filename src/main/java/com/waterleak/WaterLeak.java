@@ -1,4 +1,4 @@
-package com.waterleak.waterleak;
+package com.waterleak;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

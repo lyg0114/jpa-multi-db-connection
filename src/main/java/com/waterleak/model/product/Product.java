@@ -1,4 +1,4 @@
-package com.waterleak.waterleak.model.product;
+package com.waterleak.model.product;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
