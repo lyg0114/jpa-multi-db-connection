@@ -22,7 +22,7 @@ import org.springframework.transaction.PlatformTransactionManager;
  * @since : 2022/11/12
  */
 @Configuration
-@PropertySource({"classpath:application.yml"})
+@PropertySource({"classpath:application-dev.yml"})
 @EnableJpaRepositories(
     basePackages = "com.waterleak.dao.product",
     entityManagerFactoryRef = "productEntityManager",
