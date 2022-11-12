@@ -23,13 +23,13 @@ import org.springframework.transaction.PlatformTransactionManager;
  * @since : 2022/11/12
  */
 @Configuration
-@PropertySource({"classpath:application-dev.yml"})
+@PropertySource({"classpath:application-${spring.profiles.active}.yml"})
 @EnableJpaRepositories(
     basePackages = "com.waterleak.dao.user",
     entityManagerFactoryRef = "userEntityManager",
     transactionManagerRef = "userTransactionManager"
 )
-@Profile("dev")
+@Profile("!dev")
 public class PersistenceUserConfiguration {
   @Autowired
   private Environment env;
