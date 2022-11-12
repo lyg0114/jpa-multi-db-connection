@@ -3,6 +3,8 @@ package com.waterleak.config;
 import java.util.HashMap;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -31,8 +33,8 @@ public class PersistenceUserConfiguration {
   @Autowired
   private Environment env;
 
-  @Bean
   @Primary
+  @Bean
   public LocalContainerEntityManagerFactoryBean userEntityManager() {
     LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
     em.setDataSource(userDataSource());
@@ -48,13 +50,9 @@ public class PersistenceUserConfiguration {
 
   @Primary
   @Bean
+  @ConfigurationProperties(prefix = "spring.datasource")
   public DataSource userDataSource() {
-    DriverManagerDataSource dataSource = new DriverManagerDataSource();
-    dataSource.setDriverClassName( env.getProperty("jdbc.driverClassName"));
-    dataSource.setUrl(env.getProperty("user.jdbc.url"));
-    dataSource.setUsername(env.getProperty("jdbc.user"));
-    dataSource.setPassword(env.getProperty("jdbc.pass"));
-    return dataSource;
+    return DataSourceBuilder.create().build();
   }
 
   @Primary
