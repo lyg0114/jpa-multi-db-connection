@@ -21,7 +21,8 @@ import org.springframework.transaction.PlatformTransactionManager;
  * @since : 2022/11/12
  */
 @Configuration
-@PropertySource({"classpath:application-${spring.profiles.active}.yml"})
+//@PropertySource({"classpath:application-${spring.profiles.active}.yml"})
+@PropertySource({"classpath:application.yml"})
 @EnableJpaRepositories(
     basePackages = "com.waterleak.dao.product",
     entityManagerFactoryRef = "productEntityManager",
