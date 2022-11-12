@@ -22,7 +22,7 @@ import org.springframework.transaction.PlatformTransactionManager;
  * @since : 2022/11/12
  */
 @Configuration
-@PropertySource({"classpath:persistence-multiple-db.properties"})
+@PropertySource({"classpath:application-${spring.profiles.active}.yml"})
 @EnableJpaRepositories(
     basePackages = "com.waterleak.dao.user",
     entityManagerFactoryRef = "userEntityManager",
