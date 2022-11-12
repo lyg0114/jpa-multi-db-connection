@@ -1,0 +1,25 @@
+server:
+  port: '7001'
+
+hibernate:
+  hbm2ddl:
+    auto: create-drop
+  cache:
+    use_query_cache: false
+    use_second_level_cache: false
+
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        id:
+          new_generator_mappings: false
+  datasource:
+    jdbcUrl: jdbc:h2:mem:user-scheme;DB_CLOSE_DELAY=-1;INIT=CREATE SCHEMA IF NOT EXISTS USERS
+    username: sa
+    password: sa
+  second-datasource:
+    jdbcUrl: jdbc:h2:mem:spring_jpa_product;DB_CLOSE_DELAY=-1;INIT=CREATE SCHEMA IF NOT EXISTS PRODUCTS
+    username: sa
+    password: sa

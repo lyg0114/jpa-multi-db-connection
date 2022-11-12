@@ -1,4 +1,4 @@
-package com.waterleak.config;
+package com.waterleak.config.dev;
 
 import java.util.HashMap;
 import javax.sql.DataSource;
@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -22,22 +23,23 @@ import org.springframework.transaction.PlatformTransactionManager;
  * @since : 2022/11/12
  */
 @Configuration
-@PropertySource({"classpath:application-${spring.profiles.active}.yml"})
+@PropertySource({"classpath:application-dev.yml"})
 @EnableJpaRepositories(
-    basePackages = "com.waterleak.dao.product",
-    entityManagerFactoryRef = "productEntityManager",
-    transactionManagerRef = "productTransactionManager"
+    basePackages = "com.waterleak.dao.user",
+    entityManagerFactoryRef = "userEntityManager",
+    transactionManagerRef = "userTransactionManager"
 )
-@Profile("!dev")
-public class PersistenceProductConfiguration {
+@Profile("dev")
+public class PersistenceUserConfiguration {
   @Autowired
   private Environment env;
 
+  @Primary
   @Bean
-  public LocalContainerEntityManagerFactoryBean productEntityManager() {
+  public LocalContainerEntityManagerFactoryBean userEntityManager() {
     LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-    em.setDataSource(productDataSource());
-    em.setPackagesToScan(new String[]{"com.waterleak.model.product"});
+    em.setDataSource(userDataSource());
+    em.setPackagesToScan(new String[]{"com.waterleak.model.user"});
     HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
     em.setJpaVendorAdapter(vendorAdapter);
     HashMap<String, Object> properties = new HashMap<>();
@@ -47,18 +49,20 @@ public class PersistenceProductConfiguration {
     return em;
   }
 
+  @Primary
   @Bean
-  @ConfigurationProperties(prefix = "spring.second-datasource")
-  public DataSource productDataSource() {
+  @ConfigurationProperties(prefix = "spring.datasource")
+  public DataSource userDataSource() {
     return DataSourceBuilder.create().build();
   }
 
+  @Primary
   @Bean
-  public PlatformTransactionManager productTransactionManager() {
+  public PlatformTransactionManager userTransactionManager() {
     JpaTransactionManager transactionManager
         = new JpaTransactionManager();
     transactionManager.setEntityManagerFactory(
-        productEntityManager().getObject());
+        userEntityManager().getObject());
     return transactionManager;
   }
 }

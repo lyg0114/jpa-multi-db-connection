@@ -1,4 +1,4 @@
-package com.waterleak.config;
+package com.waterleak.config.dev;
 
 import java.util.HashMap;
 import javax.sql.DataSource;
@@ -22,13 +22,13 @@ import org.springframework.transaction.PlatformTransactionManager;
  * @since : 2022/11/12
  */
 @Configuration
-@PropertySource({"classpath:application-${spring.profiles.active}.yml"})
+@PropertySource({"classpath:application-dev.yml"})
 @EnableJpaRepositories(
     basePackages = "com.waterleak.dao.product",
     entityManagerFactoryRef = "productEntityManager",
     transactionManagerRef = "productTransactionManager"
 )
-@Profile("!dev")
+@Profile("dev")
 public class PersistenceProductConfiguration {
   @Autowired
   private Environment env;
