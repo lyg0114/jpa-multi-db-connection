@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @package : com.waterleak.waterleak.dao
  * @since : 2022/11/12
  */
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Long> {
 }
