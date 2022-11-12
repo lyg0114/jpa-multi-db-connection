@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,13 +25,17 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=WaterLeak.class)
+@ActiveProfiles("dev")
 @EnableTransactionManagement
 public class JpaMultipleDBIntegrationTest {
   @Autowired private UserRepository userRepository;
   @Autowired private ProductRepository productRepository;
 
+  private final String USRT_TRANSACTION_MANAGER = "userTransactionManager";
+  private final String PRODUCT_TRANSACTION_MANAGER = "productTransactionManager";
+
   @Test
-  @Transactional("userTransactionManager")
+  @Transactional(USRT_TRANSACTION_MANAGER)
   public void whenCreatingUser_thenCreated() {
     User user = new User();
     user.setName("John");
@@ -42,7 +47,7 @@ public class JpaMultipleDBIntegrationTest {
   }
 
   @Test
-  @Transactional("userTransactionManager")
+  @Transactional(USRT_TRANSACTION_MANAGER)
   public void whenCreatingUsersWithSameEmail_thenRollback() {
     User user1 = new User();
     user1.setName("John");
@@ -67,7 +72,7 @@ public class JpaMultipleDBIntegrationTest {
   }
 
   @Test
-  @Transactional("productTransactionManager")
+  @Transactional(PRODUCT_TRANSACTION_MANAGER)
   public void whenCreatingProduct_thenCreated() {
     Product product = new Product();
     product.setName("Book");
