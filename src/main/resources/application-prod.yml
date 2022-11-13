@@ -16,11 +16,10 @@ spring:
         id:
           new_generator_mappings: false
   datasource:
-    password: kylelovelizzy
     jdbcUrl: jdbc:mysql://13.125.80.45:3306/user-scheme?useUnicode=true&charaterEncoding=utf-8
     username: root
-    url: jdbc:h2:mem:yglee
-  second-datasource:
     password: kylelovelizzy
-    username: root
+  second-datasource:
     jdbcUrl: jdbc:mysql://13.125.80.45:3306/product-scheme?useUnicode=true&charaterEncoding=utf-8
+    username: root
+    password: kylelovelizzy
