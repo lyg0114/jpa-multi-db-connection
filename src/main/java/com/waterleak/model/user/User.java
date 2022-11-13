@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * @since : 2022/11/12
  */
 @Entity
-@Table(schema = "users")
+@Table(schema = "users", name = "consumer")
 public class User {
 
   public User() {}
