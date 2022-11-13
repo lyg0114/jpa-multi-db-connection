@@ -1,5 +1,5 @@
 server:
-  port: '7001'
+  port: 7001
 
 hibernate:
   hbm2ddl:
@@ -18,8 +18,8 @@ spring:
   datasource:
     jdbcUrl: jdbc:mysql://13.125.80.45:3306/user-scheme?useUnicode=true&charaterEncoding=utf-8
     username: root
-    password: kylelovelizzy
+    password:
   second-datasource:
     jdbcUrl: jdbc:mysql://13.125.80.45:3306/product-scheme?useUnicode=true&charaterEncoding=utf-8
     username: root
-    password: kylelovelizzy
+    password:
