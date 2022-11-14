@@ -3,7 +3,7 @@ server:
 
 hibernate:
   hbm2ddl:
-    auto: create-drop
+    auto: update
   cache:
     use_query_cache: false
     use_second_level_cache: false
@@ -15,11 +15,11 @@ spring:
       hibernate:
         id:
           new_generator_mappings: false
-  datasource:
-    jdbcUrl: jdbc:mysql://13.125.80.45:3306/user-scheme?useUnicode=true&charaterEncoding=utf-8
+  datasource: # wapi
+    jdbcUrl:
     username: root
     password:
-  second-datasource:
-    jdbcUrl: jdbc:mysql://13.125.80.45:3306/product-scheme?useUnicode=true&charaterEncoding=utf-8
+  second-datasource: # reporting
+    jdbcUrl:
     username: root
     password:
