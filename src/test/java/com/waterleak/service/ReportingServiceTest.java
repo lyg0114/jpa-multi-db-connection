@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.waterleak.WaterLeak;
+import com.waterleak.config.Globals;
 import com.waterleak.dao.reporting.AckNbiotRepository;
 import com.waterleak.dto.AckNbiotDto;
 import com.waterleak.model.reporting.AckNbiot;
@@ -30,7 +31,7 @@ public class ReportingServiceTest {
   private AckNbiotRepository ackNbiotRepository;
 
   @Test
-  @Transactional("reportingTransactionManager")
+  @Transactional(Globals.REPORTING_TRANSACTION_MANAGER)
   public void AckNbiot_단건_조회() {
     AckNbiot instruct = AckNbiot.builder()
         .imei("123456789012345")

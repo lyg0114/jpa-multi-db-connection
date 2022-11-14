@@ -1,4 +1,4 @@
-package com.waterleak.config.dev;
+package com.waterleak.config;
 
 import java.util.HashMap;
 import javax.sql.DataSource;
@@ -18,14 +18,14 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-@PropertySource({"classpath:application-dev.yml"})
+@PropertySource({"classpath:application-${spring.profiles.active}.yml"})
 @EnableJpaRepositories(
     basePackages = "com.waterleak.dao.reporting",
     entityManagerFactoryRef = "reportingEntityManager",
     transactionManagerRef = "reportingTransactionManager"
 )
-@Profile("dev")
-public class PersistenceUserConfiguration {
+@Profile("!dev")
+public class PersistenceReportingConfiguration {
   @Autowired
   private Environment env;
 
