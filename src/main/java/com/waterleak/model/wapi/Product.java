@@ -4,11 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * @author : iyeong-gyo
- * @package : com.waterleak.waterleak.model.product
- * @since : 2022/11/12
- */
 @Entity
 @Table(name = "product")
 public class Product {
