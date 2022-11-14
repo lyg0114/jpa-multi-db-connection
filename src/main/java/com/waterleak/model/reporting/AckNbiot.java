@@ -1,5 +1,6 @@
 package com.waterleak.model.reporting;
 
+import com.waterleak.dto.AckNbiotDto;
 import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,5 +39,12 @@ public class AckNbiot {
         this.nbInstruction = nbInstruction;
         this.insertDate = insertDate;
         this.updateDate = updateDate;
+    }
+
+    public AckNbiotDto convertToDto() {
+        AckNbiotDto.AckNbiotDtoBuilder builder = AckNbiotDto.builder();
+        builder.imei(this.imei);
+        builder.nbInstruction(this.nbInstruction);
+        return builder.build();
     }
 }
