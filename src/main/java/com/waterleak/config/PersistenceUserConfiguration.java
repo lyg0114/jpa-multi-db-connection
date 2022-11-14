@@ -17,11 +17,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
-/**
- * @author : iyeong-gyo
- * @package : com.waterleak.config
- * @since : 2022/11/12
- */
 @Configuration
 @PropertySource({"classpath:application-${spring.profiles.active}.yml"})
 @PropertySource({"classpath:application-dev.yml"})

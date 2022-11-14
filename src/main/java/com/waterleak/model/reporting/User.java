@@ -7,11 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * @author : iyeong-gyo
- * @package : com.waterleak.waterleak.model.user
- * @since : 2022/11/12
- */
 @Entity
 @Table(name = "consumer")
 public class User {
