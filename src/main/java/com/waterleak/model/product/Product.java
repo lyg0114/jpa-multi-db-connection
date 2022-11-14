@@ -10,7 +10,7 @@ import javax.persistence.Table;
  * @since : 2022/11/12
  */
 @Entity
-@Table(schema = "products")
+@Table(name = "product")
 public class Product {
 
   public Product() {}
