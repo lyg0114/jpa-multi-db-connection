@@ -25,8 +25,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 @PropertySource({"classpath:application-dev.yml"})
 @EnableJpaRepositories(
     basePackages = "com.waterleak.dao.wapi",
-    entityManagerFactoryRef = "productEntityManager",
-    transactionManagerRef = "productTransactionManager"
+    entityManagerFactoryRef = "wapiEntityManager",
+    transactionManagerRef = "wapiTransactionManager"
 )
 @Profile("dev")
 public class PersistenceProductConfiguration {
@@ -34,7 +34,7 @@ public class PersistenceProductConfiguration {
   private Environment env;
 
   @Bean
-  public LocalContainerEntityManagerFactoryBean productEntityManager() {
+  public LocalContainerEntityManagerFactoryBean wapiEntityManager() {
     LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
     em.setDataSource(productDataSource());
     em.setPackagesToScan(new String[]{"com.waterleak.model.wapi"});
@@ -54,11 +54,11 @@ public class PersistenceProductConfiguration {
   }
 
   @Bean
-  public PlatformTransactionManager productTransactionManager() {
+  public PlatformTransactionManager wapiTransactionManager() {
     JpaTransactionManager transactionManager
         = new JpaTransactionManager();
     transactionManager.setEntityManagerFactory(
-        productEntityManager().getObject());
+        wapiEntityManager().getObject());
     return transactionManager;
   }
 }

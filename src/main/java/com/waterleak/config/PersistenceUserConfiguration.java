@@ -24,10 +24,11 @@ import org.springframework.transaction.PlatformTransactionManager;
  */
 @Configuration
 @PropertySource({"classpath:application-${spring.profiles.active}.yml"})
+@PropertySource({"classpath:application-dev.yml"})
 @EnableJpaRepositories(
     basePackages = "com.waterleak.dao.reporting",
-    entityManagerFactoryRef = "userEntityManager",
-    transactionManagerRef = "userTransactionManager"
+    entityManagerFactoryRef = "reportingEntityManager",
+    transactionManagerRef = "reportingTransactionManager"
 )
 @Profile("!dev")
 public class PersistenceUserConfiguration {
@@ -36,7 +37,7 @@ public class PersistenceUserConfiguration {
 
   @Primary
   @Bean
-  public LocalContainerEntityManagerFactoryBean userEntityManager() {
+  public LocalContainerEntityManagerFactoryBean reportingEntityManager() {
     LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
     em.setDataSource(userDataSource());
     em.setPackagesToScan(new String[]{"com.waterleak.model.reporting"});
@@ -58,11 +59,11 @@ public class PersistenceUserConfiguration {
 
   @Primary
   @Bean
-  public PlatformTransactionManager userTransactionManager() {
+  public PlatformTransactionManager reportingTransactionManager() {
     JpaTransactionManager transactionManager
         = new JpaTransactionManager();
     transactionManager.setEntityManagerFactory(
-        userEntityManager().getObject());
+        reportingEntityManager().getObject());
     return transactionManager;
   }
 }

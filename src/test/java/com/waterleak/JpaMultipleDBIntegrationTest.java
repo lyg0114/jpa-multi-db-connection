@@ -32,7 +32,7 @@ public class JpaMultipleDBIntegrationTest {
   @Autowired private ProductRepository productRepository;
 
   @Test
-  @Transactional("userTransactionManager")
+  @Transactional("reportingTransactionManager")
   public void whenCreatingUser_thenCreated() {
     User user = new User();
     user.setName("John");
@@ -44,7 +44,7 @@ public class JpaMultipleDBIntegrationTest {
   }
 
   @Test
-  @Transactional("userTransactionManager")
+  @Transactional("reportingTransactionManager")
   public void whenCreatingUsersWithSameEmail_thenRollback() {
     User user1 = new User();
     user1.setName("John");
@@ -69,7 +69,7 @@ public class JpaMultipleDBIntegrationTest {
   }
 
   @Test
-  @Transactional("productTransactionManager")
+  @Transactional("wapiTransactionManager")
   public void whenCreatingProduct_thenCreated() {
     Product product = new Product();
     product.setName("Book");
