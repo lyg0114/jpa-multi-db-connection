@@ -1,4 +1,4 @@
-package com.waterleak.model.user;
+package com.waterleak.model.reporting;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

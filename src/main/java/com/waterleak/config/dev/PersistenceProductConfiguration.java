@@ -24,7 +24,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 @PropertySource({"classpath:application-dev.yml"})
 @EnableJpaRepositories(
-    basePackages = "com.waterleak.dao.product",
+    basePackages = "com.waterleak.dao.wapi",
     entityManagerFactoryRef = "productEntityManager",
     transactionManagerRef = "productTransactionManager"
 )
@@ -37,7 +37,7 @@ public class PersistenceProductConfiguration {
   public LocalContainerEntityManagerFactoryBean productEntityManager() {
     LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
     em.setDataSource(productDataSource());
-    em.setPackagesToScan(new String[]{"com.waterleak.model.product"});
+    em.setPackagesToScan(new String[]{"com.waterleak.model.wapi"});
     HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
     em.setJpaVendorAdapter(vendorAdapter);
     HashMap<String, Object> properties = new HashMap<>();

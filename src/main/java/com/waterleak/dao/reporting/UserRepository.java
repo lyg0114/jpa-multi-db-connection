@@ -1,6 +1,6 @@
-package com.waterleak.dao.user;
+package com.waterleak.dao.reporting;
 
-import com.waterleak.model.user.User;
+import com.waterleak.model.reporting.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

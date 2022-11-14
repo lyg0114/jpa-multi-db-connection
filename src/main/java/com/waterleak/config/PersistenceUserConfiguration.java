@@ -25,7 +25,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 @PropertySource({"classpath:application-${spring.profiles.active}.yml"})
 @EnableJpaRepositories(
-    basePackages = "com.waterleak.dao.user",
+    basePackages = "com.waterleak.dao.reporting",
     entityManagerFactoryRef = "userEntityManager",
     transactionManagerRef = "userTransactionManager"
 )
@@ -39,7 +39,7 @@ public class PersistenceUserConfiguration {
   public LocalContainerEntityManagerFactoryBean userEntityManager() {
     LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
     em.setDataSource(userDataSource());
-    em.setPackagesToScan(new String[]{"com.waterleak.model.user"});
+    em.setPackagesToScan(new String[]{"com.waterleak.model.reporting"});
     HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
     em.setJpaVendorAdapter(vendorAdapter);
     HashMap<String, Object> properties = new HashMap<>();

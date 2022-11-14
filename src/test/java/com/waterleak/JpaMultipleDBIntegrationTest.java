@@ -3,10 +3,10 @@ package com.waterleak;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.Assert.fail;
 
-import com.waterleak.dao.product.ProductRepository;
-import com.waterleak.dao.user.UserRepository;
-import com.waterleak.model.product.Product;
-import com.waterleak.model.user.User;
+import com.waterleak.dao.wapi.ProductRepository;
+import com.waterleak.dao.reporting.UserRepository;
+import com.waterleak.model.wapi.Product;
+import com.waterleak.model.reporting.User;
 import java.util.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
