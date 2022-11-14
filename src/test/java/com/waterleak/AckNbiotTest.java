@@ -15,11 +15,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author : iyeong-gyo
- * @package : com.waterleak
- * @since : 2022/11/12
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = WaterLeak.class)
 @EnableTransactionManagement
